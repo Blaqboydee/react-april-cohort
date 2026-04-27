@@ -1,5 +1,5 @@
 import React,  { useState } from "react";
-import { FaArrowCircleDown } from "react-icons/fa";
+// import { FaArrowCircleDown } from "react-icons/fa";
 
 const Hero = () => {
 
@@ -37,7 +37,7 @@ const Hero = () => {
             <p>Hello {name}</p>
 
             <button onClick={Changename}>Change name</button>
-            <FaArrowCircleDown />
+            {/* <FaArrowCircleDown /> */}
 
         </div>
       
