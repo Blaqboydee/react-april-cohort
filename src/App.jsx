@@ -5,13 +5,15 @@ import Hero from './components/Hero'
 import { Footer } from './components/Header'
 import Landingpage from './pages/Landingpage'
 import { Newcomponent } from './components/Newcomponent'
+import { Todo } from './components/Todo'
 
 
 const App = () => {
   return (
     <div>
     {/* <Landingpage/> */}
-    <Newcomponent/>
+    {/* <Newcomponent/> */}
+    <Todo/>
     </div>
   )
 }

@@ -47,24 +47,31 @@ export const Newcomponent = () => {
         />
         <br />
         <button onClick={handleDetails}>Submit</button>
-        <div>
-            {collection.map((student, index)=>(
-                <div key={index}>
-               <div>
-                <h1>S/N</h1>
-                <h1>{index + 1}</h1>
-                <h1> {student.studentName}</h1>
-                <h1>{student.course}</h1>
-                <h1>{student.level}</h1>
-
-               </div>
-                  
-                
-                </div>
-            )
-
-            )}
-        </div>
+        <table border="1" cellPadding="8" cellSpacing="0">
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Student Name</th>
+              <th>Course</th>
+              <th>Level</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {collection.map((student, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{student.studentName}</td>
+                <td>{student.course}</td>
+                <td>{student.level}</td>
+                <td>
+                  <button onClick={() => alert(`Edit student: ${student.studentName}`)}>Edit</button>
+                  <button onClick={() => setCollection(collection.filter((_, i) => i !== index))}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
