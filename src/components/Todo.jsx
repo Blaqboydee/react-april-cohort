@@ -4,32 +4,51 @@ import { toast, ToastContainer } from "react-toastify";
 export const Todo = () => {
   const [todo, setTodo] = useState("");
   const [todoArray, setTodoArray] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   const Addtodo = () => {
-    if (!todo)
-      // return alert("Fill this field")
-      return toast.error("Kindly input a todo");
+    if (!todo) return toast.error("Kindly input a todo");
 
-    setTodoArray([...todoArray, todo]);
-    console.log(todoArray);
+    if (editIndex !== null) {
+      const newArray = [...todoArray];
 
-    toast.success("Todo added!!");
+      newArray.splice(editIndex, 1, todo);
+
+      setTodoArray(newArray);
+
+      setTodo("");
+      setIsEditing(false)
+
+      toast.success("todo updated!!");
+    } else {
+      setTodoArray([...todoArray, todo]);
+      console.log(todoArray);
+      setTodo("");
+      toast.success("Todo added!!");
+    }
   };
 
   const handleDelete = (index) => {
-   const newArray = [...todoArray];
+    const newArray = [...todoArray];
 
-   newArray.splice(index, 1)
+    newArray.splice(index, 1);
 
-   setTodoArray(newArray)
-    
-  }
+    setTodoArray(newArray);
+  };
 
   const deleteWithFilter = (index) => {
     console.log(index);
-    
-   setTodoArray(todoArray.filter((_, i) => i !== index))
-  }
+
+    setTodoArray(todoArray.filter((_, i) => i !== index));
+  };
+
+  const handleEdit = (index) => {
+    console.log(index);
+    setIsEditing(true);
+    setTodo(todoArray[index]);
+    setEditIndex(index);
+  };
 
   return (
     <>
@@ -39,15 +58,30 @@ export const Todo = () => {
         onChange={(e) => setTodo(e.target.value)}
         placeholder="Enter Todo"
         type="text"
+        value={todo}
       />
-      <button onClick={Addtodo}>Addtodo</button>
+      <button onClick={Addtodo}>
+        {isEditing ? "Update Todo" : "Add to do"}
+      </button>
 
       {todoArray.map((todo, index) => (
-        <div>
+        <div key={index}>
           <h1>{todo}</h1>
-          <button>Edit</button>
+          <button
+            onClick={() => {
+              handleEdit(index);
+            }}
+          >
+            Edit
+          </button>
           {/* <button onClick={() => {handleDelete(index)}}>Delete</button> */}
-          <button onClick={() => {deleteWithFilter(index)}}>Delete</button>
+          <button
+            onClick={() => {
+              deleteWithFilter(index);
+            }}
+          >
+            Delete
+          </button>
         </div>
       ))}
 

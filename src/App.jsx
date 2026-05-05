@@ -11,9 +11,9 @@ import { Todo } from './components/Todo'
 const App = () => {
   return (
     <div>
-    {/* <Landingpage/> */}
+    <Landingpage/>
     {/* <Newcomponent/> */}
-    <Todo/>
+    {/* <Todo/> */}
     </div>
   )
 }
