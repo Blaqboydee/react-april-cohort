@@ -6,12 +6,14 @@ import { Footer } from './components/Header'
 import Landingpage from './pages/Landingpage'
 import { Newcomponent } from './components/Newcomponent'
 import { Todo } from './components/Todo'
+import Signup from './pages/Signup'
 
 
 const App = () => {
   return (
     <div>
-    <Landingpage/>
+      <Signup/>
+    {/* <Landingpage/> */}
     {/* <Newcomponent/> */}
     {/* <Todo/> */}
     </div>
