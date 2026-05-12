@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Input from '../components/Input'
 import Button from '../components/Button'
 import {Register} from "../hooks/useAuth"
+import { Link } from 'react-router-dom'
 
 
 const Signup = () => {
@@ -14,6 +15,10 @@ const Signup = () => {
       <Input placeholder="Enter password" type="password" whenItype={handleDetails} name="password"/>
 
       <Button oruko="Sign Up" onclick={handleSignup}/>
+
+      <Link to="/">Back to Landing</Link>
+
+
     </div>
   )
 }
